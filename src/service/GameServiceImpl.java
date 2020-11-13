@@ -31,7 +31,12 @@ public class GameServiceImpl implements GameService {
 
 	@Override
 	public boolean checkIfWin(Player player) {
-		return player.getCurrentPosition() == this.game.getSize();
+		if(player.getCurrentPosition() == this.game.getSize()) {
+			this.game.setWinner(player);
+			return true;
+		}
+		return false;
+			
 	}
 
 	@Override

@@ -22,7 +22,11 @@ public class GameBuilder {
 	}
 
 	private ArrayList<Player> createPlayer(List<String> nameList) {
-		return null;
+		ArrayList<Player> playerList = new ArrayList<Player>();
+		for(String name:nameList) {
+			playerList.add(new Player(name));
+		}
+		return playerList;
 	}
 
 	public Game createGame(List<String> nameList, List<TelePortType> portList, int size) {

@@ -1,6 +1,7 @@
 package builder;
 
 import common.TelePortType;
+import model.Ladder;
 import model.Snake;
 import model.TelePort;
 
@@ -11,7 +12,7 @@ public class TelePortFactory {
 		case SNAKE:
 			return new Snake();
 		case LADDER:
-			return null;
+			return new Ladder();
 		default:
 			return null;
 		}

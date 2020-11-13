@@ -27,7 +27,7 @@ public class BoardBuilder {
 			telePortTable.put(1, createTeleport(type,1,2));
 			telePortTable.put(4, createTeleport(type,5,9));
 		}
-		return new Board(null,size);
+		return new Board(telePortTable,size);
 	}
 
 }
