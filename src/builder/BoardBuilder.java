@@ -3,6 +3,10 @@ package builder;
 import java.util.HashMap;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.JSONException;
+import org.json.simple.JSONObject;
+
 import common.TelePortType;
 import model.Board;
 import model.TelePort;
@@ -21,11 +25,14 @@ public class BoardBuilder {
 		return port;
 	}
 	
-	public Board createBoard(List<TelePortType> typeList,int size) {
+	public Board createBoard(JSONArray teleportData,int size) throws JSONException {
 		HashMap<Integer,TelePort> telePortTable = new HashMap<Integer,TelePort>();
-		for(TelePortType type: typeList) {
-			telePortTable.put(1, createTeleport(type,1,2));
-			telePortTable.put(4, createTeleport(type,5,9));
+		for (int i = 0; i < teleportData.size(); i++) {
+			JSONObject teleport = (JSONObject)teleportData.get(i);
+			TelePortType type = TelePortType.valueOf(teleport.get("type").toString());
+			int start = Integer.parseInt(teleport.get("start").toString());
+			int end = Integer.parseInt(teleport.get("end").toString());
+			telePortTable.put(start, createTeleport(type,start,end));
 		}
 		return new Board(telePortTable,size);
 	}

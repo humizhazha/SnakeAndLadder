@@ -9,19 +9,21 @@ public class Game {
 	private ArrayList<Player> playerList;
 	private DiceStrategy dic;
 	private Player winner;
+	private boolean gameOver;
 
 	public Game(Board board, ArrayList<Player> playerList, DiceStrategy dic) {
 		this.board = board;
 		this.playerList = playerList;
 		this.dic = dic;
 		this.winner = null;
+		this.gameOver = false;
 	}
 
 	public Board getBoard() {
 		return board;
 	}
 
-	public void setBoard(Board board) {
+	public void setBoard(Board board) {		
 		this.board = board;
 	}
 
@@ -64,6 +66,44 @@ public class Game {
 		}else {
 			return port.transferTo();
 		}
+	}
+	
+	public void startGame() {
+		while (!gameOver) {
+			for (Player player : this.getPlayerList()) {
+				round(player);
+				this.gameOver = checkIfWin(player);
+				if (gameOver) {
+					System.out.println(this.getWinner() + " wins the game");
+					break;
+				}
+
+			}
+		}
+
+	}
+
+	public boolean checkIfWin(Player player) {
+		if(player.getCurrentPosition() == this.getSize()) {
+			this.setWinner(player);
+			return true;
+		}
+		return false;
+			
+	}
+
+	public void round(Player player) {
+		int step = this.rollDice();
+		int targetPosition = player.getCurrentPosition() + step;
+		if (checkBoundary(targetPosition)) {
+			player.moveTo(this.checkEvent(targetPosition));
+			System.out.println(player + " moves to "+targetPosition);
+		}
+
+	}
+
+	private boolean checkBoundary(int position) {
+		return position <= this.getSize();
 	}
 
 }
