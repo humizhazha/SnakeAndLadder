@@ -1,14 +1,20 @@
 package model;
 
 public class Snake extends TelePort{
-
-	public Snake(int start, int end) {
-		super(start, end);
-		// TODO Auto-generated constructor stub
+	
+	@Override
+	public int transferTo() {
+		return this.start;
+	}
+	
+	@Override
+	public int eventPosition() {
+		return this.end;
 	}
 
-	public Snake() {
-		// TODO Auto-generated constructor stub
+	@Override
+	public String toString() {
+		return "Snake [start=" + start + ", end=" + end + "]";
 	}
 	
 

@@ -29,7 +29,6 @@ public class Board {
 
 	public TelePort checkEvent(int position) {
 		return this.portList.get(position);
-
 	}
 
 }

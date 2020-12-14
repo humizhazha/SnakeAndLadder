@@ -31,5 +31,9 @@ public class TelePort {
 	public int transferTo() {
 		return end;
 	}
+	
+	public int eventPosition() {
+		return start;
+	}
 
 }

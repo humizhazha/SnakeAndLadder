@@ -59,11 +59,12 @@ public class Game {
 		return this.board.getSize();
 	}
 	
-	public int checkEvent(int position) {
+	private int checkEvent(Player player, int position) {
 		TelePort port = this.board.checkEvent(position);
 		if(port==null) {
 			return position;
 		}else {
+			System.out.println(player + " met a "+port);
 			return port.transferTo();
 		}
 	}
@@ -83,7 +84,7 @@ public class Game {
 
 	}
 
-	public boolean checkIfWin(Player player) {
+	private boolean checkIfWin(Player player) {
 		if(player.getCurrentPosition() == this.getSize()) {
 			this.setWinner(player);
 			return true;
@@ -96,8 +97,9 @@ public class Game {
 		int step = this.rollDice();
 		int targetPosition = player.getCurrentPosition() + step;
 		if (checkBoundary(targetPosition)) {
-			player.moveTo(this.checkEvent(targetPosition));
-			System.out.println(player + " moves to "+targetPosition);
+			int finalPosition = this.checkEvent(player, targetPosition);
+			player.moveTo(finalPosition);
+			System.out.println(player + " moves to "+finalPosition);
 		}
 
 	}

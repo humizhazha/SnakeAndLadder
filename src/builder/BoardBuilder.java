@@ -32,7 +32,8 @@ public class BoardBuilder {
 			TelePortType type = TelePortType.valueOf(teleport.get("type").toString());
 			int start = Integer.parseInt(teleport.get("start").toString());
 			int end = Integer.parseInt(teleport.get("end").toString());
-			telePortTable.put(start, createTeleport(type,start,end));
+			TelePort port = createTeleport(type,start,end);
+			telePortTable.put(port.eventPosition(), port);
 		}
 		return new Board(telePortTable,size);
 	}
