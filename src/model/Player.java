@@ -10,6 +10,11 @@ public class Player {
 		this.name = name;
 		this.currentPosition = 0;
 	}
+	
+	public Player(String name, int position) {
+		this.name = name;
+		this.currentPosition = position;
+	}
 
 	public int getCurrentPosition() {
 		return currentPosition;

@@ -6,15 +6,15 @@ import model_interface.DiceStrategy;
 
 public class Game {
 	private Board board;
-	private ArrayList<Player> playerList;
-	private DiceStrategy dic;
+	private ArrayList< Player> playerList;
+	private DiceStrategy dice;
 	private Player winner;
 	private boolean gameOver;
 
-	public Game(Board board, ArrayList<Player> playerList, DiceStrategy dic) {
+	public Game(Board board, ArrayList<Player> playerList, DiceStrategy dice) {
 		this.board = board;
 		this.playerList = playerList;
-		this.dic = dic;
+		this.dice = dice;
 		this.winner = null;
 		this.gameOver = false;
 	}
@@ -36,11 +36,11 @@ public class Game {
 	}
 
 	public DiceStrategy getDic() {
-		return dic;
+		return dice;
 	}
 
 	public void setDic(DiceStrategy dic) {
-		this.dic = dic;
+		this.dice = dic;
 	}
 
 	public Player getWinner() {
@@ -52,19 +52,19 @@ public class Game {
 	}
 
 	public int rollDice() {
-		return this.dic.rollTheDice();
+		return this.dice.rollTheDice();
 	}
 	
 	public int getSize() {
 		return this.board.getSize();
 	}
 	
-	private int checkEvent(Player player, int position) {
+	public int checkEvent(int position) {
 		TelePort port = this.board.checkEvent(position);
 		if(port==null) {
 			return position;
 		}else {
-			System.out.println(player + " met a "+port);
+			System.out.println("A "+port+" poped up");
 			return port.transferTo();
 		}
 	}
@@ -78,13 +78,11 @@ public class Game {
 					System.out.println(this.getWinner() + " wins the game");
 					break;
 				}
-
 			}
 		}
-
 	}
 
-	private boolean checkIfWin(Player player) {
+	public boolean checkIfWin(Player player) {
 		if(player.getCurrentPosition() == this.getSize()) {
 			this.setWinner(player);
 			return true;
@@ -97,15 +95,15 @@ public class Game {
 		int step = this.rollDice();
 		int targetPosition = player.getCurrentPosition() + step;
 		if (checkBoundary(targetPosition)) {
-			int finalPosition = this.checkEvent(player, targetPosition);
+			int finalPosition = this.checkEvent(targetPosition);
 			player.moveTo(finalPosition);
 			System.out.println(player + " moves to "+finalPosition);
 		}
 
 	}
 
-	private boolean checkBoundary(int position) {
-		return position <= this.getSize();
+	public boolean checkBoundary(int position) {
+		return (position <= this.getSize()) && (position > 0);
 	}
 
 }

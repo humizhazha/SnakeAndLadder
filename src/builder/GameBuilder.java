@@ -2,8 +2,8 @@ package builder;
 
 import java.util.ArrayList;
 
-import org.json.simple.JSONArray;
 import org.json.JSONException;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import model.Board;

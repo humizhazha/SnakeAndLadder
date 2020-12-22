@@ -1,10 +1,9 @@
 package builder;
 
 import java.util.HashMap;
-import java.util.List;
 
-import org.json.simple.JSONArray;
 import org.json.JSONException;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import common.TelePortType;
@@ -18,7 +17,7 @@ public class BoardBuilder {
 		this.factory = new TelePortFactory();
 	}
 
-	private TelePort createTeleport(TelePortType type, int start, int end) {
+	public TelePort createTeleport(TelePortType type, int start, int end) {
 		TelePort port = factory.createTelePort(type);
 		port.setStart(start);
 		port.setEnd(end);

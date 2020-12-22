@@ -1,3 +1,4 @@
+package app;
 import org.json.simple.JSONObject;
 
 import builder.GameBuilder;
