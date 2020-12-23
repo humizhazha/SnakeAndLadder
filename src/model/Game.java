@@ -98,6 +98,8 @@ public class Game {
 			int finalPosition = this.checkEvent(targetPosition);
 			player.moveTo(finalPosition);
 			System.out.println(player + " moves to "+finalPosition);
+		}else {
+			System.out.println(player + " moves out of boundary");
 		}
 
 	}
