@@ -1,6 +1,7 @@
 package builder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,7 +23,7 @@ public class GameBuilder {
 
 	}
 
-	private ArrayList<Player> createPlayer(JSONArray playerData) {
+	private List<Player> createPlayer(JSONArray playerData) {
 		ArrayList<Player> playerList = new ArrayList<Player>();
 		for (int i = 0; i < playerData.size(); i++) {
 			playerList.add(new Player(((((JSONObject) playerData.get(i)).get("name").toString()))));

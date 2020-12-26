@@ -1,17 +1,18 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model_interface.DiceStrategy;
 
 public class Game {
 	private Board board;
-	private ArrayList< Player> playerList;
+	private List< Player> playerList;
 	private DiceStrategy dice;
 	private Player winner;
 	private boolean gameOver;
 
-	public Game(Board board, ArrayList<Player> playerList, DiceStrategy dice) {
+	public Game(Board board, List<Player> playerList, DiceStrategy dice) {
 		this.board = board;
 		this.playerList = playerList;
 		this.dice = dice;
@@ -19,7 +20,7 @@ public class Game {
 		this.gameOver = false;
 	}
 
-	public void setPlayerList(ArrayList<Player> playerList) {
+	public void setPlayerList(List<Player> playerList) {
 		this.playerList = playerList;
 	}
 
