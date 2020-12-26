@@ -1,5 +1,7 @@
 package model;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +9,7 @@ import java.util.HashMap;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 
 import model_interface.DiceStrategy;
 
@@ -18,7 +21,8 @@ public class GameTest {
 		game = initGame();
 	}
 	static Game initGame() {
-		DiceStrategy dice = new FixedDice(5);
+		DiceStrategy dice = mock(SingleDice.class);
+		when(dice.rollTheDice()).thenReturn(5);
 		return new Game(initBoard(), initPlayerList(), dice);
 	}
 	static Board initBoard() {
