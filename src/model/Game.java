@@ -19,28 +19,8 @@ public class Game {
 		this.gameOver = false;
 	}
 
-	public Board getBoard() {
-		return board;
-	}
-
-	public void setBoard(Board board) {		
-		this.board = board;
-	}
-
-	public ArrayList<Player> getPlayerList() {
-		return playerList;
-	}
-
 	public void setPlayerList(ArrayList<Player> playerList) {
 		this.playerList = playerList;
-	}
-
-	public DiceStrategy getDic() {
-		return dice;
-	}
-
-	public void setDic(DiceStrategy dic) {
-		this.dice = dic;
 	}
 
 	public Player getWinner() {
@@ -71,7 +51,7 @@ public class Game {
 	
 	public void startGame() {
 		while (!gameOver) {
-			for (Player player : this.getPlayerList()) {
+			for (Player player : this.playerList) {
 				round(player);
 				this.gameOver = checkIfWin(player);
 				if (gameOver) {

@@ -11,20 +11,8 @@ public class Board {
 		this.size = size;
 	}
 
-	public HashMap<Integer, TelePort> getPortList() {
-		return portList;
-	}
-
-	public void setPortList(HashMap<Integer, TelePort> portList) {
-		this.portList = portList;
-	}
-
 	public int getSize() {
 		return size;
-	}
-
-	public void setSize(int size) {
-		this.size = size;
 	}
 
 	public TelePort checkEvent(int position) {

@@ -23,13 +23,6 @@ public class Player {
 	public void setCurrentPosition(int currentPosition) {
 		this.currentPosition = currentPosition;
 	}
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 	
 	public void moveForward(int step) {
 		this.currentPosition += step;

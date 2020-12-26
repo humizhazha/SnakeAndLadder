@@ -2,7 +2,6 @@ package builder;
 
 import java.util.HashMap;
 
-import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -24,7 +23,7 @@ public class BoardBuilder {
 		return port;
 	}
 	
-	public Board createBoard(JSONArray teleportData,int size) throws JSONException {
+	public Board createBoard(JSONArray teleportData,int size){
 		HashMap<Integer,TelePort> telePortTable = new HashMap<Integer,TelePort>();
 		for (int i = 0; i < teleportData.size(); i++) {
 			JSONObject teleport = (JSONObject)teleportData.get(i);
