@@ -45,11 +45,11 @@ public class GameTest {
 
 	@Test
 	public void testCheckEvent() {
-		assertEquals(65,game.checkEvent(65));		
-		assertEquals(0,game.checkEvent(0));
-		assertEquals(-1,game.checkEvent(-1));
-		assertEquals(68,game.checkEvent(74));
-		assertEquals(90,game.checkEvent(54));
+		assertEquals(65,game.getEvent(65));		
+		assertEquals(0,game.getEvent(0));
+		assertEquals(-1,game.getEvent(-1));
+		assertEquals(68,game.getEvent(74));
+		assertEquals(90,game.getEvent(54));
 
 	}
 

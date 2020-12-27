@@ -23,8 +23,8 @@ public class Game {
 		return this.dice.rollTheDice();
 	}
 	
-	public int checkEvent(int position) {
-		TelePort port = this.board.checkEvent(position);
+	public int getEvent(int position) {
+		TelePort port = this.board.getTelePort(position);
 		if(port==null) {
 			return position;
 		}else {
@@ -59,7 +59,7 @@ public class Game {
 		int step = this.rollDice();
 		int targetPosition = player.getCurrentPosition() + step;
 		if (checkBoundary(targetPosition)) {
-			int finalPosition = this.checkEvent(targetPosition);
+			int finalPosition = this.getEvent(targetPosition);
 			player.moveTo(finalPosition);
 			System.out.println(player + " moves to "+finalPosition);
 		}else {

@@ -11,7 +11,7 @@ public class Board {
 		this.size = size;
 	}
 
-	public TelePort checkEvent(int position) {
+	public TelePort getTelePort(int position) {
 		return this.portList.get(position);
 	}
 
