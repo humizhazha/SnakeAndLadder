@@ -4,15 +4,11 @@ import java.util.HashMap;
 
 public class Board {
 	private HashMap<Integer, TelePort> portList;
-	private int size;
+	public final int size;
 
 	public Board(HashMap<Integer, TelePort> portList, int size) {
 		this.portList = portList;
 		this.size = size;
-	}
-
-	public int getSize() {
-		return size;
 	}
 
 	public TelePort checkEvent(int position) {

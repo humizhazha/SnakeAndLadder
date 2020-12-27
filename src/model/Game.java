@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model_interface.DiceStrategy;
@@ -20,24 +19,8 @@ public class Game {
 		this.gameOver = false;
 	}
 
-	public void setPlayerList(List<Player> playerList) {
-		this.playerList = playerList;
-	}
-
-	public Player getWinner() {
-		return winner;
-	}
-
-	public void setWinner(Player winner) {
-		this.winner = winner;
-	}
-
 	public int rollDice() {
 		return this.dice.rollTheDice();
-	}
-	
-	public int getSize() {
-		return this.board.getSize();
 	}
 	
 	public int checkEvent(int position) {
@@ -56,7 +39,7 @@ public class Game {
 				round(player);
 				this.gameOver = checkIfWin(player);
 				if (gameOver) {
-					System.out.println(this.getWinner() + " wins the game");
+					System.out.println(this.winner + " wins the game");
 					break;
 				}
 			}
@@ -64,8 +47,8 @@ public class Game {
 	}
 
 	public boolean checkIfWin(Player player) {
-		if(player.getCurrentPosition() == this.getSize()) {
-			this.setWinner(player);
+		if(player.getCurrentPosition() == this.board.size) {
+			this.winner = player;
 			return true;
 		}
 		return false;
@@ -86,7 +69,7 @@ public class Game {
 	}
 
 	public boolean checkBoundary(int position) {
-		return (position <= this.getSize()) && (position > 0);
+		return (position <= this.board.size) && (position > 0);
 	}
 
 }
