@@ -3,11 +3,11 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 
@@ -16,30 +16,30 @@ import model_interface.DiceStrategy;
 public class GameTest {
 	private static Game game;
 
-	@BeforeClass
-	public static void testSetup() {
+	@Before
+	public void testSetup() {
 		game = initGame();
 	}
-	static Game initGame() {
-		DiceStrategy dice = mock(SingleDice.class);
+	Game initGame() {
+		DiceStrategy dice = mock(DiceStrategy.class);
 		when(dice.rollTheDice()).thenReturn(5);
 		return new Game(initBoard(), initPlayerList(), dice);
 	}
-	static Board initBoard() {
+	Board initBoard() {
 		int size = 100;
 		return new Board(initTeleportList(), size);
 	}
-	static ArrayList<Player> initPlayerList() {
-		ArrayList<Player> playerList = new ArrayList<> (Arrays.asList(new Player("Vivi"), new Player("Roger")));
+	List<Player> initPlayerList() {
+	    List<Player> playerList = Arrays.asList(new Player("Vivi"),new Player("Roger"));
 		return playerList;
 	}
-	static HashMap<Integer, TelePort> initTeleportList() {
-		HashMap<Integer, TelePort> teleportList = new HashMap<>();
+	HashMap<Integer, TelePort> initTeleportList() {
+		HashMap<Integer, TelePort> teleportMap = new HashMap<>();
 		TelePort snake = new Snake(68, 74);
 		TelePort ladder = new Ladder(54, 90);
-		teleportList.put(snake.eventPosition(), snake);
-		teleportList.put(ladder.eventPosition(), ladder);
-		return teleportList;
+		teleportMap.put(snake.eventPosition(), snake);
+		teleportMap.put(ladder.eventPosition(), ladder);
+		return teleportMap;
 	}
 
 
@@ -79,23 +79,23 @@ public class GameTest {
 	@Test
 	public void testRound() {
 		Player player = new Player("Test",100);
-		game.round(player);
+		game.playOneTurn(player);
 		assertEquals(100,player.getCurrentPosition());
 
 		player.setCurrentPosition(55);
-		game.round(player);
+		game.playOneTurn(player);
 		assertEquals(60,player.getCurrentPosition());
 
 		player.setCurrentPosition(69);
-		game.round(player);
+		game.playOneTurn(player);
 		assertEquals(68,player.getCurrentPosition());
 
 		player.setCurrentPosition(49);
-		game.round(player);
+		game.playOneTurn(player);
 		assertEquals(90,player.getCurrentPosition());
 
 		player.setCurrentPosition(0);
-		game.round(player);
+		game.playOneTurn(player);
 		assertEquals(5,player.getCurrentPosition());
 
 	}

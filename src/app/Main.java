@@ -16,7 +16,7 @@ public class Main {
 		
 		GameBuilder builder = new GameBuilder();
 		Game game = builder.createGame(config);
-		game.startGame();
+		game.run();
 
 	}
 

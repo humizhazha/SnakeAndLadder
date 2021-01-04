@@ -8,15 +8,11 @@ public class Game {
 	private Board board;
 	private List< Player> playerList;
 	private DiceStrategy dice;
-	private Player winner;
-	private boolean gameOver;
 
 	public Game(Board board, List<Player> playerList, DiceStrategy dice) {
 		this.board = board;
 		this.playerList = playerList;
 		this.dice = dice;
-		this.winner = null;
-		this.gameOver = false;
 	}
 
 	public int rollDice() {
@@ -33,13 +29,14 @@ public class Game {
 		}
 	}
 	
-	public void startGame() {
+	public void run() {
+		boolean gameOver = false;
 		while (!gameOver) {
 			for (Player player : this.playerList) {
-				round(player);
-				this.gameOver = checkIfWin(player);
+				playOneTurn(player);
+				gameOver = checkIfWin(player);
 				if (gameOver) {
-					System.out.println(this.winner + " wins the game");
+					System.out.println(player + " wins the game");
 					break;
 				}
 			}
@@ -48,14 +45,13 @@ public class Game {
 
 	public boolean checkIfWin(Player player) {
 		if(player.getCurrentPosition() == this.board.size) {
-			this.winner = player;
 			return true;
 		}
 		return false;
 			
 	}
 
-	public void round(Player player) {
+	public void playOneTurn(Player player) {
 		int step = this.rollDice();
 		int targetPosition = player.getCurrentPosition() + step;
 		if (checkBoundary(targetPosition)) {
