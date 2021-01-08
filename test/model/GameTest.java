@@ -75,6 +75,22 @@ public class GameTest {
 		assertEquals(false,game.checkIfWin(player));	
 
 	}
+	
+	@Test
+	public void testPlayOneTurn() {
+		Player player = new Player("Test",95);
+		assertEquals(100, game.playOneTurn(player));
+		
+		player.setCurrentPosition(65);
+		assertEquals(70, game.playOneTurn(player));
+		
+		player.setCurrentPosition(98);
+		assertEquals(98, game.playOneTurn(player));
+		
+		player.setCurrentPosition(100);
+		assertEquals(100, game.playOneTurn(player));
+		
+	}
 
 	@Test
 	public void testRound() {

@@ -51,16 +51,19 @@ public class Game {
 			
 	}
 
-	public void playOneTurn(Player player) {
+	public int playOneTurn(Player player) {
 		int step = this.rollDice();
 		int targetPosition = player.getCurrentPosition() + step;
 		if (checkBoundary(targetPosition)) {
 			int finalPosition = this.getFinalPosition(targetPosition);
 			player.moveTo(finalPosition);
 			System.out.println(player + " moves to "+finalPosition);
+			return finalPosition;
 		}else {
 			System.out.println(player + " moves out of boundary");
 		}
+		return player.getCurrentPosition();
+		
 
 	}
 
