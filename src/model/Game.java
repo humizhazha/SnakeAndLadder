@@ -44,10 +44,7 @@ public class Game {
 	}
 
 	public boolean checkIfWin(Player player) {
-		if(player.getCurrentPosition() == this.board.size) {
-			return true;
-		}
-		return false;
+		return player.getCurrentPosition() == this.board.size;
 			
 	}
 
