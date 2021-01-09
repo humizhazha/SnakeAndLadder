@@ -15,7 +15,7 @@ public class Main {
 		JSONObject config = parser.parseJSON(configFileName);
 		
 		GameBuilder builder = new GameBuilder();
-		Game game = builder.createGame(config);
+		Game game = builder.getGame(config);
 		game.run();
 
 	}
