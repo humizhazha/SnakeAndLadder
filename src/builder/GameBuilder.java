@@ -13,7 +13,7 @@ import model.Board;
 import model.Game;
 import model.Player;
 import model.SingleDice;
-import model.TelePort;
+import model_interface.TelePort;
 
 public class GameBuilder {
 	private TelePortFactory factory;
@@ -23,9 +23,7 @@ public class GameBuilder {
 	}
 
 	public TelePort buildTeleport(TelePortType type, int start, int end) {
-		TelePort port = factory.createTelePort(type);
-		port.setStart(start);
-		port.setEnd(end);
+		TelePort port = factory.createTelePort(type, start, end);
 		return port;
 	}
 

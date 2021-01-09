@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import model_interface.DiceStrategy;
+import model_interface.TelePort;
 
 public class GameTest {
 	private static Game game;

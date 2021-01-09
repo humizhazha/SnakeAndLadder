@@ -1,20 +1,38 @@
 package model;
 
-public class Ladder extends TelePort{
+import model_interface.TelePort;
+
+public class Ladder implements TelePort{
 	
-	public Ladder() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private int transferTo;
+	private int position;
 	
 	public Ladder(int start, int end) {
-		super(start, end);
-		// TODO Auto-generated constructor stub
+		this.transferTo = end;
+		this.position = start;
 	}
+	
+	
 
 	@Override
 	public String toString() {
-		return "Ladder [start=" + start + ", end=" + end + "]";
+		return "Ladder [from=" + position + " to=" + transferTo + "]";
+	}
+
+
+
+	@Override
+	public int transferTo() {
+		// TODO Auto-generated method stub
+		return transferTo;
+	}
+
+
+
+	@Override
+	public int eventPosition() {
+		// TODO Auto-generated method stub
+		return position;
 	}
 
 }

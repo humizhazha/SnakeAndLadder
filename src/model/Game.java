@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import model_interface.DiceStrategy;
+import model_interface.TelePort;
 
 public class Game {
 	private Board board;
@@ -30,14 +31,12 @@ public class Game {
 	}
 	
 	public void run() {
-		boolean gameOver = false;
-		while (!gameOver) {
+		while (true) {
 			for (Player player : this.playerList) {
 				playOneTurn(player);
-				gameOver = checkIfWin(player);
-				if (gameOver) {
+				if (checkIfWin(player)) {
 					System.out.println(player + " wins the game");
-					break;
+					return;
 				}
 			}
 		}

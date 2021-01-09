@@ -2,6 +2,8 @@ package model;
 
 import java.util.Map;
 
+import model_interface.TelePort;
+
 public class Board {
 	private Map<Integer, TelePort> portMap;
 	public final int size;

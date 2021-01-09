@@ -1,31 +1,33 @@
 package model;
 
-public class Snake extends TelePort{
+import model_interface.TelePort;
+
+public class Snake implements TelePort{
+	private int transferTo;
+	private int position;
 	
 	public Snake(int start, int end) {
-		super(start, end);
-		// TODO Auto-generated constructor stub
+		this.transferTo = start;
+		this.position = end;
 	}
 	
 	public Snake() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public int transferTo() {
-		return this.start;
+		return this.transferTo;
 	}
 	
 
 	@Override
 	public int eventPosition() {
-		return this.end;
+		return this.position;
 	}
 
 	@Override
 	public String toString() {
-		return "Snake [start=" + start + ", end=" + end + "]";
+		return "Snake [from=" + position + " to=" + transferTo + "]";
 	}
 	
 
